@@ -9,7 +9,7 @@ import { Product } from './model/product';
   styleUrl: './app.component.scss',
 })
 export class App {
-  products: Product[] = [];
+  protected products: Product[] = [];
 
   setEmptyData(): void {
     this.products = [];
