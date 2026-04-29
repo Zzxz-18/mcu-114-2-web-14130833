@@ -25,5 +25,9 @@ readonly id = input.required<number, string | number>({ transform: numberAttribu
 
   readonly price = input<number, string | number>(0, { transform: numberAttribute });
 
+  readonly edit = output<void>();
+
+  readonly remove = output<void>();
+
   readonly view = output<void>();
 }
