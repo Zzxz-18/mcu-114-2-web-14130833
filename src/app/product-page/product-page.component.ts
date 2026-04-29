@@ -47,12 +47,14 @@ export class ProductPageComponent{
     this.getProducts(this.pageIndex(), this.pageSize());
   }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   protected onEdit(product: Product): void {
     this.router.navigate(['product', 'form', product.id]);
+  }
+
+  protected onRemove({ id }: Product): void {
+    this.productService.remove(id);
+    this.pageIndex.set(1);
+    this.getProducts(this.pageIndex(), this.pageSize());
   }
 
   protected onView(product: Product): void {
@@ -64,4 +66,5 @@ export class ProductPageComponent{
     this.products.set(data);
     this.totalCount.set(count);
   }
+
 }
