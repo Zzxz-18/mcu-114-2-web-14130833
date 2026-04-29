@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { Product } from '../model/product';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-page',
@@ -10,6 +11,7 @@ import { ProductCardListComponent } from '../product-card-list/product-card-list
   styleUrl: './product-page.component.scss',
 })
 export class ProductPageComponent {
+  private router = inject(Router);
 
   protected products: Product[] = [
 
@@ -24,8 +26,8 @@ export class ProductPageComponent {
       price: 10000,
     }),
     new Product({
-      id: 1,
-      name: '書籍 A',
+      id: 2,
+      name: '書籍 B',
       authors: ['作者甲', '作者乙', '作者丙'],
       company: '博碩文化',
       isShow: true,
@@ -34,8 +36,8 @@ export class ProductPageComponent {
       price: 10000,
     }),
     new Product({
-      id: 1,
-      name: '書籍 A',
+      id: 3,
+      name: '書籍 C',
       authors: ['作者甲', '作者乙', '作者丙'],
       company: '博碩文化',
       isShow: true,
@@ -44,8 +46,8 @@ export class ProductPageComponent {
       price: 10000,
     }),
     new Product({
-      id: 1,
-      name: '書籍 A',
+      id: 4,
+      name: '書籍 D',
       authors: ['作者甲', '作者乙', '作者丙'],
       company: '博碩文化',
       isShow: true,
@@ -54,8 +56,8 @@ export class ProductPageComponent {
       price: 10000,
     }),
     new Product({
-      id: 1,
-      name: '書籍 A',
+      id: 5,
+      name: '書籍 E',
       authors: ['作者甲', '作者乙', '作者丙'],
       company: '博碩文化',
       isShow: true,
@@ -64,4 +66,8 @@ export class ProductPageComponent {
       price: 10000,
     }),
   ];
+
+  protected onView(product: Product): void {
+    this.router.navigate(['product', product.id]);
+  }
 }
